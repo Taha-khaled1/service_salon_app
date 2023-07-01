@@ -7,7 +7,18 @@ late SharedPreferences sharedPreferences;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   sharedPreferences = await SharedPreferences.getInstance();
+  sharedPreferences.setString("lang", 'en');
+  final id = sharedPreferences.getInt('id');
+  final name = sharedPreferences.getString('name');
+  final email = sharedPreferences.getString('email');
+  final phone = sharedPreferences.getString('phone');
+  final token = sharedPreferences.getString('token');
 
+  print('id: $id');
+  print('name: $name');
+  print('email: $email');
+  print('phone: $phone');
+  print('token: $token');
   runApp(
     DevicePreview(
       builder: (context) {

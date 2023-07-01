@@ -65,3 +65,24 @@ contactUsRespon(name, email, message, phone) async {
   print(respons);
   return respons;
 }
+
+getProductDetalisRespon(int id) async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    'https://77ls.ae/api/service/details/1',
+    myheadersres: Curd().myheaders3,
+  );
+  print(respons);
+  return respons;
+}
+
+getAddtoCartRespon(int productid) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.addToCart,
+    {'product_id': productid.toString()},
+    myheadersres: Curd().myheadersfail,
+  );
+  print(respons);
+  return respons;
+}

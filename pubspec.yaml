@@ -71,14 +71,32 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 flutter_native_splash:
   color: "#FFFFFF"
-  image: assets/icons/logoa_animal (2).png
+  image: assets/icons/logom.png
   android_gravity: center
+# flutter_native_splash:
+#   image_path: "assets/icons/logom.png"
+#   android: true
+#   ios: true
+#   remove_alpha_ios: true
+#   # adaptative_icon_background: "#000000"
+#   # adaptative_icon_foreground: "assets/icons/logom.png"
+#   android_enable_legacy_mode: false
+#   resize_to_android: true
+#   resize_to_ios: true
+#   image_path_android: "assets/icons/logom.png"
+#   image_path_ios: "assets/icons/logom.png"
+#   name: "logom.png"
+#   round_icon: true
+#   # round_icon_border_color: "#000000"
+#   round_icon_border_width: "2"
+#   adaptive_icon: true
+#   color: "#000000"
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icons/logoa_animal (2).png"
-  adaptive_icon_background: "#FFFFFF"
+  image_path: "assets/icons/logom.png"
+  adaptive_icon_background: "#000000"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

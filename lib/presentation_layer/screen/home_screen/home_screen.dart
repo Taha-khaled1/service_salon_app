@@ -14,6 +14,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_controller/home_controller.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/widget/Titelmore.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/widget/catogery_card.dart';
+import 'package:single_salon/presentation_layer/screen/service_details_screen/service_details_screen.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 void openDrawer() {
@@ -36,7 +37,8 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.put(HomeController());
+    HomeController homeController = Get.put(HomeController(), permanent: true);
+
     return Scaffold(
       body: InfoWidget(
         builder: (context, deviceInfo) {
@@ -140,17 +142,7 @@ class HomeScreen extends StatelessWidget {
                             itemBuilder: (BuildContext context, int index) {
                               return InkWell(
                                 onTap: () {
-                                  // print(index);
-                                  // print(homeController.selectedCategoryIndex);
                                   homeController.changeSelected(index);
-                                  // print(
-                                  //     '////////////////////////////////////////////');
-                                  // print(index);
-                                  // print(homeController.selectedCategoryIndex);
-                                  // homeController.getAllproduct(
-                                  //   homeController
-                                  //       .catogeryModels!.data![index].id!,
-                                  // );
                                 },
                                 child: AnimatedContainer(
                                   duration: Duration(milliseconds: 500),
@@ -229,6 +221,8 @@ class HomeScreen extends StatelessWidget {
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(
+                                press: () {},
+                                isservice: true,
                                 serviceData:
                                     homeController.serviceModel?.data![index],
                               );
@@ -255,69 +249,92 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
     this.serviceData,
+    this.isservice,
+    this.press,
   });
   final ServiceData? serviceData;
+  final bool? isservice;
+  final void Function()? press;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 305,
-      alignment: Alignment.centerRight,
-      decoration: BoxDecoration(
-        border: Border.all(color: ColorManager.kPrimary2),
-      ),
-      child: InfoWidget(
-        builder: (context, deviceInfo) {
-          return Column(
-            children: [
-              Image.asset(
-                'assets/images/msaage.jpg',
-                fit: BoxFit.fitWidth,
-                width: 500,
-              ),
-              SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3),
-                child: Text(
-                  '${serviceData?.title ?? ''}',
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ServiceDetailsScreen(
+              des: serviceData?.description ?? "",
+              titel: serviceData?.title ?? "",
+              price: serviceData?.price ?? "",
+              id: serviceData?.id ?? 1,
+              image: serviceData?.image ?? "",
+              discountPrice: serviceData?.discountPrice ?? "",
+              isservice: isservice ?? true,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        width: 200,
+        height: 305,
+        alignment: Alignment.centerRight,
+        decoration: BoxDecoration(
+          border: Border.all(color: ColorManager.kPrimary2),
+        ),
+        child: InfoWidget(
+          builder: (context, deviceInfo) {
+            return Column(
+              children: [
+                Image.network(
+                  serviceData?.image! ?? '',
+                  fit: BoxFit.fill,
+                  width: 500,
+                  height: 155,
+                ),
+                SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  child: Text(
+                    '${serviceData?.title ?? ''}',
+                    style: MangeStyles().getBoldStyle(
+                      color: ColorManager.kPrimary2,
+                      fontSize: FontSize.s16,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                // SizedBox(height: 8),
+                // Text(
+                //   'أعد شحن جسدك وعقلك من خلال التدليك المنعش للأنسجة العميقة لمدة 90 دقيقة. يستخدم المعالجون المهرة لدي',
+                //   style: TextStyle(
+                //     color: ColorManager.kPrimary2,
+                //     fontSize: FontSize.s14,
+                //     fontFamily: "Cairo",
+                //   ),
+                //   textAlign: TextAlign.center,
+                // ),
+                SizedBox(height: 5),
+                Text(
+                  '${AppStrings.aed.tr} ${serviceData?.price ?? '10'}',
                   style: MangeStyles().getBoldStyle(
                     color: ColorManager.kPrimary2,
                     fontSize: FontSize.s16,
                   ),
                   textAlign: TextAlign.center,
                 ),
-              ),
-              // SizedBox(height: 8),
-              // Text(
-              //   'أعد شحن جسدك وعقلك من خلال التدليك المنعش للأنسجة العميقة لمدة 90 دقيقة. يستخدم المعالجون المهرة لدي',
-              //   style: TextStyle(
-              //     color: ColorManager.kPrimary2,
-              //     fontSize: FontSize.s14,
-              //     fontFamily: "Cairo",
-              //   ),
-              //   textAlign: TextAlign.center,
-              // ),
-              SizedBox(height: 8),
-              Text(
-                '${AppStrings.aed.tr} ${serviceData?.price ?? '10'}',
-                style: MangeStyles().getBoldStyle(
-                  color: ColorManager.kPrimary2,
-                  fontSize: FontSize.s16,
+                SizedBox(height: 5),
+                CustomButton(
+                  width: deviceInfo.localWidth * 0.8,
+                  haigh: 50,
+                  fontSize: 14,
+                  color: Colors.black,
+                  text: AppStrings.getService.tr,
+                  press: press,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 8),
-              CustomButton(
-                width: deviceInfo.localWidth * 0.8,
-                haigh: 50,
-                fontSize: 14,
-                color: Colors.black,
-                text: AppStrings.getService.tr,
-                press: () {},
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
   }

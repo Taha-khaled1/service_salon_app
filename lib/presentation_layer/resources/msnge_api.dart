@@ -10,9 +10,9 @@ class APiMange {
   static const String serviceOffers = "$baseurl/services/offers";
   static const String contact = "$baseurl/contact-us";
 
-  static const String forcountry = "$baseurl/forcountry";
-  static const String search = "$baseurl/searchnameorcountrey?search";
-  static const String filterdata = "$baseurl/filterdata";
+  static const String procuctdetails = "$baseurl/procuct/details";
+  static const String servicedetails = "$baseurl/service/details";
+  static const String addToCart = "$baseurl/add/to/cart";
 
   static const String propertydetalis = "$baseurl/propertydetalis";
 

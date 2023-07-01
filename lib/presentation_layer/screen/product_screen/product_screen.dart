@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:single_salon/main.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
+import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
+import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 import 'package:single_salon/presentation_layer/screen/product_screen/product_controller/product_controller.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -45,6 +49,27 @@ class ProductScreen extends StatelessWidget {
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(
+                                isservice: false,
+                                press: () {
+                                  if (sharedPreferences.getString('token') ==
+                                      null) {
+                                    showDilog(
+                                      context,
+                                      'يجب تسجيل الدخول اولا',
+                                      type: QuickAlertType.info,
+                                      onConfirmBtnTap: () {
+                                        Get.to(() => LoginScreen());
+                                      },
+                                    );
+                                  } else {
+                                    controller.addtoCart(
+                                      context,
+                                      controller
+                                              .serviceModel?.data![index].id ??
+                                          1,
+                                    );
+                                  }
+                                },
                                 serviceData:
                                     controller.serviceModel?.data![index],
                               );
