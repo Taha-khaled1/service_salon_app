@@ -58,31 +58,31 @@ class CartCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  text: 'السعر :',
-                  style: MangeStyles().getBoldStyle(
-                    color: ColorManager.kTextblack,
-                    fontSize: FontSize.s14,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'AED',
-                      style: MangeStyles().getRegularStyle(
-                        color: ColorManager.kPrimary,
-                        fontSize: FontSize.s16,
-                      ),
-                    ),
-                    TextSpan(
-                      text: cart!.price.toString(),
-                      style: MangeStyles().getBoldStyle(
-                        color: ColorManager.kPrimary,
-                        fontSize: FontSize.s18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // RichText(
+              //   text: TextSpan(
+              //     text: 'السعر :',
+              //     style: MangeStyles().getBoldStyle(
+              //       color: ColorManager.kTextblack,
+              //       fontSize: FontSize.s14,
+              //     ),
+              //     children: <TextSpan>[
+              //       TextSpan(
+              //         text: 'AED',
+              //         style: MangeStyles().getRegularStyle(
+              //           color: ColorManager.kPrimary,
+              //           fontSize: FontSize.s16,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: cart!.price.toString(),
+              //         style: MangeStyles().getBoldStyle(
+              //           color: ColorManager.kPrimary,
+              //           fontSize: FontSize.s18,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               GetBuilder<CartController>(
                 builder: (controller) {
                   return IncrasingorDecrasing(

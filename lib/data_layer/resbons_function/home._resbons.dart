@@ -86,3 +86,13 @@ getAddtoCartRespon(int productid) async {
   print(respons);
   return respons;
 }
+
+getCartRespon() async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    APiMange.getcartitem,
+    myheadersres: Curd().myheaders2,
+  );
+  print(respons);
+  return respons;
+}

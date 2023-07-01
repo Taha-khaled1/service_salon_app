@@ -1,5 +1,8 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:single_salon/main.dart';
+import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
@@ -143,5 +146,17 @@ class customAppBar extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+void checkLogin(
+    {required BuildContext context,
+    required void Function()? onConfirmBtnTap,
+    required void Function() elsefun}) {
+  if (sharedPreferences.getString('token') == null) {
+    showDilog(context, 'يجب تسجيل الدخول اولا',
+        type: QuickAlertType.info, onConfirmBtnTap: onConfirmBtnTap);
+  } else {
+    elsefun();
   }
 }

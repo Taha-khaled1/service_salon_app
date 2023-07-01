@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:single_salon/main.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
+import 'package:single_salon/presentation_layer/components/appbar1.dart';
 import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
@@ -51,24 +52,20 @@ class ProductScreen extends StatelessWidget {
                               return ProductWidget(
                                 isservice: false,
                                 press: () {
-                                  if (sharedPreferences.getString('token') ==
-                                      null) {
-                                    showDilog(
-                                      context,
-                                      'يجب تسجيل الدخول اولا',
-                                      type: QuickAlertType.info,
-                                      onConfirmBtnTap: () {
-                                        Get.to(() => LoginScreen());
-                                      },
-                                    );
-                                  } else {
-                                    controller.addtoCart(
-                                      context,
-                                      controller
-                                              .serviceModel?.data![index].id ??
-                                          1,
-                                    );
-                                  }
+                                  checkLogin(
+                                    context: context,
+                                    onConfirmBtnTap: () {
+                                      Get.to(() => LoginScreen());
+                                    },
+                                    elsefun: () {
+                                      controller.addtoCart(
+                                        context,
+                                        controller.serviceModel?.data![index]
+                                                .id ??
+                                            1,
+                                      );
+                                    },
+                                  );
                                 },
                                 serviceData:
                                     controller.serviceModel?.data![index],

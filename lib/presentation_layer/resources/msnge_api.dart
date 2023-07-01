@@ -14,7 +14,7 @@ class APiMange {
   static const String servicedetails = "$baseurl/service/details";
   static const String addToCart = "$baseurl/add/to/cart";
 
-  static const String propertydetalis = "$baseurl/propertydetalis";
+  static const String getcartitem = "$baseurl/cart/items";
 
   static const String addquery = "$baseurl/addenqueris";
   static const String addproperty = "$baseurl/addproperty";

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:quickalert/quickalert.dart';
+import 'package:single_salon/application_layer/utils/handling.dart';
+import 'package:single_salon/application_layer/utils/statusrequst.dart';
+import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 
 import '../../../../data_layer/models/carttest.dart';
 
@@ -12,38 +15,28 @@ class CartController extends GetxController {
   bool xtemp = false;
   bool ctemp = false;
   String deliveryType = '';
-
+  late StatusRequest statusRequest2;
+  CartItemModel? cartItemModel;
   void updatePay(String value) {
     deliveryType = value;
     update();
   }
-  // CartListModels? cartListModels;
-  // List<CartItems> carModelsdemo = [];
 
-  // getCartList(int idCato) async {
-  //   carModelsdemo.clear();
-  //   totelPrice = 0;
-  //   totelTex = 0;
-  //   try {
-  //     var response = await getCartListRes(idCato);
-
-  //     for (var i = 0; i < response.length; i++) {
-  //       cartListModels = await CartListModels.fromJson(response[i]);
-  //       for (int q = 0; q < cartListModels!.cartItems!.length; q++) {
-  //         totelPrice += cartListModels!.cartItems![q].price!.toDouble() *
-  //             cartListModels!.cartItems![q].quantity!.toDouble();
-  //         totelTex += cartListModels!.cartItems![q].tax!.toDouble() *
-  //             cartListModels!.cartItems![q].quantity!.toDouble();
-  //         carModelsdemo.add(cartListModels!.cartItems![q]);
-  //       }
-  //     }
-  //     update();
-  //     return response;
-  //   } catch (e) {
-  //     print(' erorr catch $e');
-  //     return 'error';
-  //   }
-  // }
+  getCartItemt() async {
+    try {
+      statusRequest2 = StatusRequest.loading;
+      var response = await getCartRespon();
+      statusRequest2 = handlingData(response);
+      if (statusRequest2 == StatusRequest.success) {
+        cartItemModel = await CartItemModel.fromJson(response);
+      } else {
+        statusRequest2 = StatusRequest.failure;
+      }
+    } catch (e) {
+      statusRequest2 = StatusRequest.erorr;
+    }
+    update();
+  }
 
   // StatusRequest statusRequest = StatusRequest.none;
   // deletecarts(BuildContext context, int id) async {
@@ -126,4 +119,10 @@ class CartController extends GetxController {
 
   //   update();
   // }
+
+  @override
+  void onInit() {
+    getCartItemt();
+    super.onInit();
+  }
 }

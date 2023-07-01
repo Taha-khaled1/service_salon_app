@@ -24,7 +24,7 @@ class Curd {
         'Bearer ${sharedPreferences.getString('token').toString()}',
   };
   Map<String, String> myheaders2 = {
-    'Content-Type': 'application/json',
+    'lang': '${sharedPreferences.getString('lang').toString()}',
     'Authorization':
         'Bearer ${sharedPreferences.getString('token').toString()}',
   };

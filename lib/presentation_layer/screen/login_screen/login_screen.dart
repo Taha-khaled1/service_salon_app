@@ -109,6 +109,7 @@ class LoginScreen extends StatelessWidget {
                           height: 20,
                         ),
                         CustomTextfeild(
+                          obsecuer: true,
                           valid: (value) {
                             return validInput(
                               value.toString(),

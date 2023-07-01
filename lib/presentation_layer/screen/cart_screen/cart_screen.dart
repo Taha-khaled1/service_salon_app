@@ -1,5 +1,6 @@
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/custombutten.dart';
+import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/cart_controller/cart_controller.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/cart_card.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/final_price.dart';
@@ -38,20 +39,36 @@ class CartScreen extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: cartItem.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CartCard(
-                        cart: cartItem[index],
-                        index: index,
-                      );
-                    },
+                GetBuilder<CartController>(
+                  init: CartController(),
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest2,
+                      widget: Expanded(
+                        child: ListView.builder(
+                          itemCount: controller.cartItemModel?.data!.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return CartCard(
+                              cart: cartItem[index],
+                              index: index,
+                            );
+                          },
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: deviceInfo.localWidth * 0.1, vertical: 10),
+                  child: CustomButton(
+                    width: deviceInfo.localWidth * 0.8,
+                    haigh: 60,
+                    color: ColorManager.kPrimary,
+                    text: 'طلب المنتجات',
+                    press: () {},
                   ),
                 ),
-                BottomSection(
-                  width: deviceInfo.localWidth * 0.85,
-                )
               ],
             ),
           );
