@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:single_salon/main.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/custombutten.dart';
@@ -11,6 +12,7 @@ import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_controller/home_controller.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:single_salon/presentation_layer/screen/service_details_screen/service_details_controller/service_detalis_controller.dart';
+import 'package:single_salon/presentation_layer/screen/service_screen/service_controller/service_controller.dart';
 import 'package:single_salon/presentation_layer/screen/support_screen/support_problem_account_screen.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
@@ -33,6 +35,11 @@ class ServiceDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController(), permanent: true);
+    // ServiceController serviceController =
+    //     Get.put(ServiceController(), permanent: true);
+
+    ServiceDetailsController servicedetailController =
+        Get.put(ServiceDetailsController());
     return Scaffold(
       body: InfoWidget(
         builder: (context, deviceInfo) {
@@ -111,7 +118,24 @@ class ServiceDetailsScreen extends StatelessWidget {
                           haigh: 60,
                           color: ColorManager.kPrimary,
                           text: 'اضافة الي السله',
-                          press: () {},
+                          press: () async {
+                            if (isservice) {
+                              DateTime? dateTime = await showOmniDateTimePicker(
+                                context: context,
+                              );
+                              print('$dateTime ${id}');
+                              servicedetailController.bookingService(
+                                context,
+                                id,
+                                dateTime.toString(),
+                              );
+                            } else {
+                              servicedetailController.addtoCart(
+                                context,
+                                id,
+                              );
+                            }
+                          },
                         ),
                         Container(
                           alignment: Alignment.center,
@@ -227,6 +251,21 @@ class ServiceDetailsScreen extends StatelessWidget {
                               return ProductWidget(
                                 serviceData:
                                     homeController.serviceModel?.data![index],
+                                isservice: true,
+                                press: () async {
+                                  DateTime? dateTime =
+                                      await showOmniDateTimePicker(
+                                    context: context,
+                                  );
+                                  print(
+                                      '$dateTime ${controller.serviceModel?.data![index].id ?? 1}');
+                                  servicedetailController.bookingService(
+                                    context,
+                                    controller.serviceModel?.data![index].id ??
+                                        1,
+                                    dateTime.toString(),
+                                  );
+                                },
                               );
                             },
                           ),

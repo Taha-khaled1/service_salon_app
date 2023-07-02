@@ -16,9 +16,9 @@ class APiMange {
 
   static const String getcartitem = "$baseurl/cart/items";
 
-  static const String addquery = "$baseurl/addenqueris";
-  static const String addproperty = "$baseurl/addproperty";
-  static const String updateviews = "$baseurl/updateviews";
+  static const String sliders = "$baseurl/sliders";
+  static const String checkout = "$baseurl/cart/checkout";
+  static const String booking = "$baseurl/make/booking";
   //--------------------------------------------------------------------------------------------------------------------------
   // static const String login = "$baseurl/auth/login";
   static const String register = "$baseurl/register";

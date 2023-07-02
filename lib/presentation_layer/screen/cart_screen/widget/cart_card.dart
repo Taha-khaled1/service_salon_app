@@ -13,7 +13,7 @@ class CartCard extends StatelessWidget {
     this.index,
     this.cart,
   }) : super(key: key);
-  final CartItem? cart;
+  final CartItemData? cart;
 
   final int? index;
   @override
@@ -33,8 +33,8 @@ class CartCard extends StatelessWidget {
                   color: const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.asset(
-                  cart!.image,
+                child: Image.network(
+                  cart?.image! ?? '',
                   width: 200,
                   height: 210,
                   fit: BoxFit.fill,
@@ -49,7 +49,7 @@ class CartCard extends StatelessWidget {
               SizedBox(
                 width: 200,
                 child: Text(
-                  cart!.name, textAlign: TextAlign.right,
+                  cart?.title! ?? "", textAlign: TextAlign.right,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 17,
@@ -58,42 +58,44 @@ class CartCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              // RichText(
-              //   text: TextSpan(
-              //     text: 'السعر :',
-              //     style: MangeStyles().getBoldStyle(
-              //       color: ColorManager.kTextblack,
-              //       fontSize: FontSize.s14,
-              //     ),
-              //     children: <TextSpan>[
-              //       TextSpan(
-              //         text: 'AED',
-              //         style: MangeStyles().getRegularStyle(
-              //           color: ColorManager.kPrimary,
-              //           fontSize: FontSize.s16,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: cart!.price.toString(),
-              //         style: MangeStyles().getBoldStyle(
-              //           color: ColorManager.kPrimary,
-              //           fontSize: FontSize.s18,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              RichText(
+                text: TextSpan(
+                  text: 'السعر :',
+                  style: MangeStyles().getBoldStyle(
+                    color: ColorManager.kTextblack,
+                    fontSize: FontSize.s14,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'AED',
+                      style: MangeStyles().getRegularStyle(
+                        color: ColorManager.kPrimary,
+                        fontSize: FontSize.s16,
+                      ),
+                    ),
+                    TextSpan(
+                      text: cart?.price.toString(),
+                      style: MangeStyles().getBoldStyle(
+                        color: ColorManager.kPrimary,
+                        fontSize: FontSize.s18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               GetBuilder<CartController>(
                 builder: (controller) {
                   return IncrasingorDecrasing(
                     fontsize: 25,
-                    count: cart!.count,
+                    count: cart?.qunt ?? 1,
                     size: 30,
                     onTapAdd: () {
-                      cartController.icrasingCount(index!, 20.0);
+                      cartController.icrasingCount(
+                          index!, double.parse(cart!.price!));
                     },
                     onTapmuns: () {
-                      cartController.decrasingCount(index!, 20.0);
+                      cartController.decrasingCount(
+                          index!, double.parse(cart!.price!));
                     },
                   );
                 },

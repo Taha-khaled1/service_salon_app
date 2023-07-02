@@ -5,6 +5,7 @@ import 'package:quickalert/quickalert.dart';
 import 'package:single_salon/application_layer/utils/handling.dart';
 import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
+import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 
 import '../../../../data_layer/models/carttest.dart';
 
@@ -16,6 +17,8 @@ class CartController extends GetxController {
   bool ctemp = false;
   String deliveryType = '';
   late StatusRequest statusRequest2;
+  StatusRequest statusRequest = StatusRequest.none;
+
   CartItemModel? cartItemModel;
   void updatePay(String value) {
     deliveryType = value;
@@ -29,6 +32,9 @@ class CartController extends GetxController {
       statusRequest2 = handlingData(response);
       if (statusRequest2 == StatusRequest.success) {
         cartItemModel = await CartItemModel.fromJson(response);
+        for (var element in cartItemModel!.data!) {
+          totelPrice += double.parse(element.price!);
+        }
       } else {
         statusRequest2 = StatusRequest.failure;
       }
@@ -38,41 +44,9 @@ class CartController extends GetxController {
     update();
   }
 
-  // StatusRequest statusRequest = StatusRequest.none;
-  // deletecarts(BuildContext context, int id) async {
-  //   statusRequest = StatusRequest.loading;
-  //   update();
-
-  //   var respon = await deleteFromCartRespon(id);
-  //   statusRequest = handlingData(respon);
-  //   try {
-  //     if (StatusRequest.success == statusRequest) {
-  //       if (respon['result'].toString() == 'true') {
-  //         showDilog(context, 'تم حذف المنتج بنجاح');
-  //         carModelsdemo.removeWhere(
-  //           (element) => element.id == id,
-  //         );
-  //       } else {
-  //         showDilog(
-  //           context,
-  //           'لم يتم حذف المنج ربما يوجد خطاء',
-  //           type: QuickAlertType.info,
-  //         );
-  //       }
-  //     } else {
-  //       showDilog(context, 'يوجد مشكله ما', type: QuickAlertType.error);
-  //     }
-  //   } catch (e) {
-  //     print('catch $e');
-  //     showDilog(context, 'يوجد مشكله ما', type: QuickAlertType.error);
-  //   }
-
-  //   update();
-  // }
-
   icrasingCount(int index, double price) {
     count++;
-    cartItem[index].count++;
+    cartItemModel!.data![index].qunt += 1;
     totelPrice += price;
     update();
   }
@@ -80,45 +54,47 @@ class CartController extends GetxController {
   decrasingCount(int index, double price) {
     if (count > 1) {
       count--;
-      cartItem[index].count--;
+      cartItemModel!.data![index].qunt -= 1;
       totelPrice -= price;
       update();
     }
   }
 
-  // StatusRequest statusRequest1 = StatusRequest.none;
-  // saveOrder(BuildContext context, String id) async {
-  //   statusRequest1 = StatusRequest.loading;
-  //   update();
+  checkOut(BuildContext context, Map productids, Map mapQunt) async {
+    statusRequest = StatusRequest.loading;
+    update();
 
-  //   var respon = await saveOrderRespon(id);
-  //   statusRequest1 = handlingData(respon);
-  //   try {
-  //     if (StatusRequest.success == statusRequest1) {
-  //       if (respon['result'].toString() == 'true') {
-  //         carModelsdemo.clear();
-  //         Get.offAndToNamed(Routes.sucssRoute);
-  //       } else {
-  //         showDilog(
-  //           context,
-  //           'عربة التسوق فارغه او الكميه غير متوفره',
-  //           type: QuickAlertType.info,
-  //         );
-  //       }
-  //     } else {
-  //       showDilog(
-  //         context,
-  //         'يوجد مشكله بحساب المستخد يرجي التواصل مع الدعم',
-  //         type: QuickAlertType.error,
-  //       );
-  //     }
-  //   } catch (e) {
-  //     print('catch $e');
-  //     showDilog(context, 'يوجد مشكله ما', type: QuickAlertType.error);
-  //   }
+    var respon = await getCartCheckoutRespon(productids, mapQunt);
+    statusRequest = handlingData(respon);
+    try {
+      if (StatusRequest.success == statusRequest) {
+        if (respon['message'].toString() == 'success') {
+          showDilog(context, 'تم ارسال الرساله الخاصه بك\nبنجاح');
+        } else {
+          showDilog(
+            context,
+            'لم يتم ارسال الرساله',
+            type: QuickAlertType.info,
+          );
+        }
+      } else {
+        showDilog(
+          context,
+          'يوجد مشكله ما',
+          type: QuickAlertType.error,
+        );
+      }
+    } catch (e) {
+      print('catch $e');
+      showDilog(
+        context,
+        'يوجد مشكله ما',
+        type: QuickAlertType.error,
+      );
+    }
 
-  //   update();
-  // }
+    update();
+  }
 
   @override
   void onInit() {

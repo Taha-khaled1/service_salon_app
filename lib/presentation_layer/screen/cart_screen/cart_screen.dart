@@ -1,6 +1,7 @@
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/custombutten.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/cart_controller/cart_controller.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/cart_card.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/final_price.dart';
@@ -22,7 +23,7 @@ class CartScreen extends StatelessWidget {
     final CartController controller = Get.put(CartController());
     return Scaffold(
       backgroundColor: ColorManager.background,
-      appBar: appbarScreenWithBack('عربة التسوق'),
+      appBar: appbarScreenWithBack(AppStrings.cart.tr),
       body: InfoWidget(
         builder: (context, deviceInfo) {
           return Container(
@@ -49,7 +50,7 @@ class CartScreen extends StatelessWidget {
                           itemCount: controller.cartItemModel?.data!.length,
                           itemBuilder: (BuildContext context, int index) {
                             return CartCard(
-                              cart: cartItem[index],
+                              cart: controller.cartItemModel?.data![index],
                               index: index,
                             );
                           },
@@ -58,16 +59,39 @@ class CartScreen extends StatelessWidget {
                     );
                   },
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: deviceInfo.localWidth * 0.1, vertical: 10),
-                  child: CustomButton(
-                    width: deviceInfo.localWidth * 0.8,
-                    haigh: 60,
-                    color: ColorManager.kPrimary,
-                    text: 'طلب المنتجات',
-                    press: () {},
-                  ),
+                GetBuilder<CartController>(
+                  builder: (controller) {
+                    return HandlingDataView(
+                      statusRequest: controller.statusRequest,
+                      widget: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: deviceInfo.localWidth * 0.1,
+                            vertical: 10),
+                        child: BottomSection(
+                          width: deviceInfo.localWidth,
+                          press: () {
+                            Map<String, dynamic> productIdsMap = {};
+                            Map<String, dynamic> quantitiesMap = {};
+                            print(controller.cartItemModel!.data!.length);
+                            for (int i = 0;
+                                i < controller.cartItemModel!.data!.length;
+                                i++) {
+                              productIdsMap[i.toString()] =
+                                  controller.cartItemModel!.data![i].id;
+                              quantitiesMap[i.toString()] =
+                                  controller.cartItemModel!.data![i].qunt;
+                            }
+                            print('${productIdsMap}------${quantitiesMap}');
+                            controller.checkOut(
+                              context,
+                              productIdsMap,
+                              quantitiesMap,
+                            );
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -82,8 +106,10 @@ class BottomSection extends StatelessWidget {
   const BottomSection({
     super.key,
     required this.width,
+    this.press,
   });
   final double width;
+  final void Function()? press;
   @override
   Widget build(BuildContext context) {
     return InfoWidget(
@@ -118,7 +144,7 @@ class BottomSection extends StatelessWidget {
                           haigh: 60,
                           color: ColorManager.kPrimary,
                           text: 'طلب المنتجات',
-                          press: () {},
+                          press: press,
                         ),
                       ),
                     ],

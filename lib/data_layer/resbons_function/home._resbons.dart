@@ -96,3 +96,42 @@ getCartRespon() async {
   print(respons);
   return respons;
 }
+
+getSliderRespon() async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    APiMange.sliders,
+    myheadersres: Curd().myheaders3,
+  );
+  print(respons);
+  return respons;
+}
+
+getCartCheckoutRespon(Map productids, Map mapQunt) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.checkout,
+    {
+      'product_ids': productids,
+      'quantities': mapQunt,
+    },
+    encode: true,
+    myheadersres: Curd().myheaders,
+  );
+  print(respons);
+  return respons;
+}
+
+bookingServiceRespon(int service_id, booking_date) async {
+  Curd curd = Curd();
+  var respons = await curd.postrequest(
+    APiMange.booking,
+    {
+      'service_id': service_id.toString(),
+      'booking_date': booking_date,
+    },
+    myheadersres: Curd().myheadersfail,
+  );
+  print(respons);
+  return respons;
+}

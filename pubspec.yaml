@@ -56,6 +56,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.4.54
   day_night_time_picker: ^1.2.0+2
   flutter_html: ^3.0.0-beta.2
+  data_table_2: ^2.5.3
+  omni_datetime_picker: ^1.0.7
 
 dev_dependencies:
   flutter_launcher_icons: "^0.11.0"

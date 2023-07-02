@@ -12,7 +12,9 @@ void main() async {
   final name = sharedPreferences.getString('name');
   final email = sharedPreferences.getString('email');
   final phone = sharedPreferences.getString('phone');
-  final token = sharedPreferences.getString('token');
+
+  final token = sharedPreferences.setString('token',
+      'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovLzc3bHMuYWUvYXBpL2xvZ2luIiwiaWF0IjoxNjg4Mjc2Njc1LCJleHAiOjE2ODgyODAyNzUsIm5iZiI6MTY4ODI3NjY3NSwianRpIjoiOE1ja1lwMnVqR1NlcnFiSiIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.IVqP1kW1COocbOM_pSvSLXtI-1hRhrWGIAvrYvSzxHg');
 
   print('id: $id');
   print('name: $name');

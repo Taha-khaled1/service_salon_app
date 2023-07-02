@@ -21,18 +21,6 @@ void openDrawer() {
   scaffoldKey.currentState?.openDrawer();
 }
 
-List<Widget> ximageoffer = [
-  Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(25),
-    ),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(25),
-      child: Image.asset('assets/images/offer.png'),
-    ),
-  ),
-];
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
@@ -67,33 +55,41 @@ class HomeScreen extends StatelessWidget {
                   //     ),
                   //   ),
                   // ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    margin: EdgeInsets.symmetric(horizontal: 12),
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 160,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: CarouselSlider(
-                      items: ximageoffer,
-                      options: CarouselOptions(
-                        height: 400,
-                        aspectRatio: 16 / 9,
-                        viewportFraction: 1,
-                        initialPage: 0,
-                        enableInfiniteScroll: true,
-                        reverse: false,
-                        autoPlay: true,
-                        autoPlayInterval: Duration(seconds: 3),
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        enlargeCenterPage: true,
-                        enlargeFactor: 0.3,
-                        // onPageChanged: callbackFunction,
-                        scrollDirection: Axis.horizontal,
-                      ),
-                    ),
+                  GetBuilder<HomeController>(
+                    builder: (controller) {
+                      return HandlingDataView(
+                        statusRequest: controller.statusRequest,
+                        widget: Container(
+                          alignment: Alignment.centerRight,
+                          margin: EdgeInsets.symmetric(horizontal: 12),
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: 160,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: CarouselSlider(
+                            items: homeController.ximageoffer,
+                            options: CarouselOptions(
+                              height: 400,
+                              aspectRatio: 16 / 9,
+                              viewportFraction: 1,
+                              initialPage: 0,
+                              enableInfiniteScroll: true,
+                              reverse: false,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 3),
+                              autoPlayAnimationDuration:
+                                  Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              enlargeFactor: 0.3,
+                              // onPageChanged: callbackFunction,
+                              scrollDirection: Axis.horizontal,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: 10),
                   GetBuilder<HomeController>(
