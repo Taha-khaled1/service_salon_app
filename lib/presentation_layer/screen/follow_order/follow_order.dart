@@ -3,28 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:single_salon/application_layer/utils/handling.dart';
 import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/models/follow_book_model.dart';
+import 'package:single_salon/data_layer/models/order_model.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 
-class FollowBookScreen extends StatefulWidget {
-  const FollowBookScreen({Key? key}) : super(key: key);
+class FollowOrderScreen extends StatefulWidget {
+  const FollowOrderScreen({Key? key}) : super(key: key);
 
   @override
-  State<FollowBookScreen> createState() => _FollowBookScreenState();
+  State<FollowOrderScreen> createState() => _FollowOrderScreenState();
 }
 
-class _FollowBookScreenState extends State<FollowBookScreen> {
+class _FollowOrderScreenState extends State<FollowOrderScreen> {
   late StatusRequest statusRequest2;
-  followBookingModel? cartItemModel;
+  OrderFollowModel? cartItemModel;
   getCartItemt() async {
     try {
       statusRequest2 = StatusRequest.loading;
-      var response = await getfollowBookRespon();
+      var response = await getfollowOrderRespon();
       statusRequest2 = handlingData(response);
       if (statusRequest2 == StatusRequest.success) {
-        cartItemModel = await followBookingModel.fromJson(response);
+        cartItemModel = await OrderFollowModel.fromJson(response);
       } else {
         statusRequest2 = StatusRequest.failure;
       }
@@ -66,20 +67,27 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
                   columns: [
                     DataColumn2(
                       label: Text(
-                        'Number of Sessions',
+                        '#',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      size: ColumnSize.L,
+                    ),
+                    DataColumn2(
+                      label: Text(
+                        'status',
                         style: TextStyle(color: Colors.white),
                       ),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
                       label: Text(
-                        'Service Name',
+                        'Total Price',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'The date of Booking',
+                        'The date of Order',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -96,13 +104,19 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
                         ),
                         DataCell(
                           Text(
-                            cartItemModel?.data![index].title ?? "title ",
+                            cartItemModel?.data![index].status ?? "",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
                         DataCell(
                           Text(
-                            cartItemModel?.data![index].theDateOfBooking ??
+                            cartItemModel?.data![index].total ?? "title ",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            cartItemModel?.data![index].theDateOfOrder ??
                                 "theDateOfBooking",
                             style: TextStyle(color: Colors.white),
                           ),

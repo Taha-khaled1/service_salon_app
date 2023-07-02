@@ -135,3 +135,23 @@ bookingServiceRespon(int service_id, booking_date) async {
   print(respons);
   return respons;
 }
+
+getfollowBookRespon() async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    APiMange.getbooking,
+    myheadersres: Curd().myheaders2,
+  );
+
+  return respons;
+}
+
+getfollowOrderRespon() async {
+  Curd curd = Curd();
+  var respons = await curd.getrequest(
+    APiMange.getorders,
+    myheadersres: Curd().myheaders2,
+  );
+
+  return respons;
+}

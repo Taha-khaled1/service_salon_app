@@ -10,6 +10,7 @@ import 'package:single_salon/presentation_layer/screen/account_screen/widget/cus
 import 'package:single_salon/presentation_layer/screen/calendar_screen/calendar_screen.dart';
 import 'package:single_salon/presentation_layer/screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:single_salon/presentation_layer/screen/follow_book/follow_book.dart';
+import 'package:single_salon/presentation_layer/screen/follow_order/follow_order.dart';
 import 'package:single_salon/presentation_layer/screen/screenseting/privacy_screen.dart';
 import 'package:single_salon/presentation_layer/screen/screenseting/sharescreen.dart';
 import 'package:single_salon/presentation_layer/screen/support_screen/support_problem_account_screen.dart';
@@ -76,7 +77,7 @@ class AccountScreen extends StatelessWidget {
                   ),
                   titel: AppStrings.trackRequests.tr,
                   onTap: () {
-                    // Get.to(()=>FollowBookScreen());
+                    Get.to(() => FollowOrderScreen());
                   },
                 ),
                 CustomListtile(

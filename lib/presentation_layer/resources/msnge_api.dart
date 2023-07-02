@@ -23,8 +23,9 @@ class APiMange {
   // static const String login = "$baseurl/auth/login";
   static const String register = "$baseurl/register";
   static const String login = "$baseurl/login";
-  static const String resetPass = "$baseurl/reset-password";
-  static const String forgotPassword = "$baseurl/forgot-password";
+
+  static const String getbooking = "$baseurl/get/my/booking";
+  static const String getorders = "$baseurl/get/my/orders";
   static const String logout = "$baseurl/logout";
   static const String verfyemail = "$baseurl/verify-email";
   static const String changePassword = "$baseurl/changePassword";
