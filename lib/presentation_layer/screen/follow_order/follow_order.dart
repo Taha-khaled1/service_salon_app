@@ -1,5 +1,6 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:single_salon/application_layer/utils/handling.dart';
 import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/models/follow_book_model.dart';
@@ -8,6 +9,7 @@ import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 
 class FollowOrderScreen extends StatefulWidget {
   const FollowOrderScreen({Key? key}) : super(key: key);
@@ -74,20 +76,20 @@ class _FollowOrderScreenState extends State<FollowOrderScreen> {
                     ),
                     DataColumn2(
                       label: Text(
-                        'status',
+                        AppStrings.status.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
                       label: Text(
-                        'Total Price',
+                        AppStrings.total_price.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'The date of Order',
+                        AppStrings.the_date_of_order.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

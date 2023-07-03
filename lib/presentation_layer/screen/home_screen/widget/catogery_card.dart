@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:single_salon/data_layer/models/cateogery_model.dart';
+import 'package:single_salon/main.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
 import 'package:single_salon/presentation_layer/resources/msnge_api.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
+import 'package:single_salon/presentation_layer/screen/service_by_catogery_screen/service_by_catogery_screen.dart';
 
 class CatogeryCard extends StatelessWidget {
   const CatogeryCard({Key? key, required this.catogeryData}) : super(key: key);
@@ -13,11 +15,8 @@ class CatogeryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Get.to(() => ServiceDetalis());
-        // Get.toNamed(
-        //   Routes.moreproduct,
-        //   arguments: [catogeryData!.id ?? 6],
-        // );
+        sharedPreferences.setInt('cId', catogeryData!.id!);
+        Get.to(() => ServiceByCatogeryScreen());
       },
       child: Padding(
         padding: const EdgeInsets.only(right: 10, left: 6),

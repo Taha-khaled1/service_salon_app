@@ -10,6 +10,7 @@ import 'package:single_salon/presentation_layer/components/navbar.dart';
 import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class LoginScreen extends StatelessWidget {
         if (message == 'Incorrect Data') {
           showDilog(
             context,
-            'معلومات تسجيل الدخول خاطئه',
+            AppStrings.invalid_credentials.tr,
             type: QuickAlertType.info,
             onConfirmBtnTap: () {
               Get.back();
@@ -58,7 +59,7 @@ class LoginScreen extends StatelessWidget {
         print('zzzzzzzzzzzzzzzzzzzzzzzzzz');
         showDilog(
           context,
-          'معلومات تسجيل الدخول خاطئه',
+          AppStrings.invalid_credentials.tr,
           type: QuickAlertType.info,
           onConfirmBtnTap: () {
             Get.back();
@@ -113,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                           onsaved: (p0) {
                             email = p0.toString();
                           },
-                          titel: 'البريد الاكتروني',
+                          titel: AppStrings.email.tr,
                           width: 15,
                           height: 100,
                           icon: Icons.email,
@@ -134,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                           onsaved: (p0) {
                             password = p0.toString();
                           },
-                          titel: 'كلمة السر',
+                          titel: AppStrings.password.tr,
                           width: 15,
                           height: 100,
                           icon: Icons.lock,
@@ -146,7 +147,7 @@ class LoginScreen extends StatelessWidget {
                           width: deviceInfo.localWidth * 0.8,
                           haigh: 60,
                           color: ColorManager.kPrimary,
-                          text: 'تسجيل الدخول',
+                          text: AppStrings.login.tr,
                           press: () async {
                             if (formkeysigin.currentState!.validate()) {
                               formkeysigin.currentState!.save();
@@ -176,8 +177,8 @@ class LoginScreen extends StatelessWidget {
                           height: 15,
                         ),
                         TextWithButtonTExt(
-                          text1: 'ليس لديك حساب؟',
-                          text2: 'اشتراك',
+                          text1: AppStrings.create_account.tr,
+                          text2: AppStrings.subscription.tr,
                           onTap: () {
                             Get.to(() => SiginUpScreen());
                           },

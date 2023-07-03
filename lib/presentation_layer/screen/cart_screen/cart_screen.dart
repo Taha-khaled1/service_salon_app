@@ -49,14 +49,14 @@ class CartScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(
-                                    'يجب تسجيل الدخول',
+                                    AppStrings.login_required.tr,
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   CustomButton(
                                     width: 400,
                                     haigh: 60,
                                     color: ColorManager.kPrimary,
-                                    text: 'تسجيل الدخول',
+                                    text: AppStrings.login.tr,
                                     press: () {},
                                   )
                                 ],
@@ -152,14 +152,14 @@ class BottomSection extends StatelessWidget {
                   return Column(
                     children: [
                       FinalPrice(
-                        title: 'المجموع الفرعي',
+                        title: AppStrings.subtotal.tr,
                         price: controller.totelPrice.toString(),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       FinalPrice(
-                        title: 'ضريبة',
+                        title: AppStrings.tax.tr,
                         price: controller.totelTex.toString(),
                       ),
                       Padding(
@@ -169,7 +169,7 @@ class BottomSection extends StatelessWidget {
                           width: deviceInfo.localWidth * 0.8,
                           haigh: 60,
                           color: ColorManager.kPrimary,
-                          text: 'طلب المنتجات',
+                          text: AppStrings.confirmation.tr,
                           press: press,
                         ),
                       ),

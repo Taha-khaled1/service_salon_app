@@ -1,11 +1,14 @@
+import 'package:get/get.dart';
 import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/application_layer/utils/valid.dart';
+import 'package:single_salon/main.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
 import 'package:single_salon/presentation_layer/components/custombutten.dart';
 import 'package:single_salon/presentation_layer/components/customtextfild.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:single_salon/presentation_layer/resources/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +27,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarScreenWithBack('تعديل الحساب'),
+      appBar: appbarScreenWithBack(AppStrings.account_information.tr),
       backgroundColor: ColorManager.background,
       body: InfoWidget(
         builder: (context, deviceInfo) {
@@ -53,7 +56,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         thickness: 1.2,
                       ),
                       Text(
-                        'الاسم واللقب',
+                        AppStrings.name.tr,
                         style: MangeStyles().getBoldStyle(
                           color: ColorManager.kTextlightgray,
                           fontSize: FontSize.s20,
@@ -63,20 +66,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 8,
                       ),
                       CustomTextfeild(
-                        // inialvalue: sharedPreferences.getString('name'),
+                        inialvalue: sharedPreferences.getString('name'),
                         valid: (p0) {
                           return validInput(p0.toString(), 1, 100, 'type');
                         },
                         onsaved: (p0) {
                           return name = p0.toString();
                         },
-                        titel: 'ادخل هنا',
+                        titel: ' ',
                         width: deviceInfo.localWidth * 0.02,
                         height: 70,
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'رقم الهاتف',
+                        AppStrings.phone.tr,
                         style: MangeStyles().getBoldStyle(
                           color: ColorManager.kTextlightgray,
                           fontSize: FontSize.s20,
@@ -86,7 +89,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 8,
                       ),
                       CustomTextfeild(
-                        // inialvalue: sharedPreferences.getString('phone') == 'null'
+                        inialvalue: sharedPreferences.getString('phone'),
                         //     ? 'لايوجد رقم هاتف'
                         //     : sharedPreferences.getString('phone')!,
                         valid: (p0) {
@@ -95,13 +98,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         onsaved: (p0) {
                           return phone = p0.toString();
                         },
-                        titel: 'ادخل هنا',
+                        titel: ' ',
                         width: deviceInfo.localWidth * 0.02,
                         height: 70,
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'البريد الاكتروني',
+                        AppStrings.email.tr,
                         style: MangeStyles().getBoldStyle(
                           color: ColorManager.kTextlightgray,
                           fontSize: FontSize.s20,
@@ -111,7 +114,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         height: 8,
                       ),
                       CustomTextfeild(
-                        // inialvalue: sharedPreferences.getString('phone') == 'null'
+                        inialvalue: sharedPreferences.getString('email'),
                         //     ? 'لايوجد رقم هاتف'
                         //     : sharedPreferences.getString('phone')!,
                         valid: (p0) {
@@ -120,7 +123,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         onsaved: (p0) {
                           // return  = p0.toString();
                         },
-                        titel: 'ادخل هنا',
+                        titel: ' ',
                         width: deviceInfo.localWidth * 0.02,
                         height: 70,
                       ),
@@ -131,7 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         width: deviceInfo.localWidth * 0.95,
                         haigh: 60,
                         color: ColorManager.kPrimary,
-                        text: 'حفظ التغيرات',
+                        text: AppStrings.confirmation.tr,
                         press: () {},
                       ),
                       SizedBox(

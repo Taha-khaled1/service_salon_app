@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:share_plus/share_plus.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 
 class ShareApp extends StatelessWidget {
   const ShareApp({super.key});
@@ -13,7 +14,7 @@ class ShareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarScreenWithBack('مشاركة التطبيق'),
+      appBar: appbarScreenWithBack(AppStrings.share_app.tr),
       backgroundColor: ColorManager.background,
       body: InfoWidget(
         builder: (context, deviceInfo) {
@@ -40,7 +41,7 @@ class ShareApp extends StatelessWidget {
                     width: deviceInfo.localWidth * 0.95,
                   ),
                   Text(
-                    "مشاركة التطبيق",
+                    AppStrings.share_app.tr,
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -72,7 +73,7 @@ class ShareApp extends StatelessWidget {
                       },
                       icon: const Icon(Icons.share),
                       label: Text(
-                        'مشاركة التطبيق',
+                        AppStrings.share_app.tr,
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w600,

@@ -6,6 +6,7 @@ import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/models/productmodel.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/components/show_dialog.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 
 class ServiceController extends GetxController {
@@ -38,11 +39,11 @@ class ServiceController extends GetxController {
     try {
       if (StatusRequest.success == statusRequest) {
         if (respon['message'].toString() == 'success') {
-          showDilog(context, 'تم الاضافه لعربة التسوق بنجاح');
+          showDilog(context, AppStrings.service_booked_successfully.tr);
         } else if (respon['message'].toString() == 'Unauthenticated') {
           showDilog(
             context,
-            'يجب تسجيل الدخول',
+            AppStrings.login_required_service_not_booked.tr,
             type: QuickAlertType.warning,
             onConfirmBtnTap: () {
               Get.to(() => LoginScreen());
@@ -51,14 +52,14 @@ class ServiceController extends GetxController {
         } else {
           showDilog(
             context,
-            'لم يتم الاضافه لعربة التسوق',
+            AppStrings.login_required.tr,
             type: QuickAlertType.info,
           );
         }
       } else {
         showDilog(
           context,
-          'يوجد مشكله ما',
+          AppStrings.there_is_a_problem_please_try_again.tr,
           type: QuickAlertType.error,
         );
       }
@@ -66,7 +67,7 @@ class ServiceController extends GetxController {
       print('catch $e');
       showDilog(
         context,
-        'يوجد مشكله ما',
+        AppStrings.there_is_a_problem_please_try_again.tr,
         type: QuickAlertType.error,
       );
     }

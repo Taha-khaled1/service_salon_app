@@ -1,4 +1,5 @@
 import 'package:single_salon/data_layer/models/carttest.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/cart_controller/cart_controller.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
@@ -60,14 +61,14 @@ class CartCard extends StatelessWidget {
               ),
               RichText(
                 text: TextSpan(
-                  text: 'السعر :',
+                  text: '${AppStrings.price.tr} : ',
                   style: MangeStyles().getBoldStyle(
                     color: ColorManager.kTextblack,
                     fontSize: FontSize.s14,
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'AED',
+                      text: AppStrings.aed.tr,
                       style: MangeStyles().getRegularStyle(
                         color: ColorManager.kPrimary,
                         fontSize: FontSize.s16,

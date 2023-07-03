@@ -117,7 +117,9 @@ class ServiceDetailsScreen extends StatelessWidget {
                           width: 185,
                           haigh: 60,
                           color: ColorManager.kPrimary,
-                          text: 'اضافة الي السله',
+                          text: isservice
+                              ? AppStrings.getService.tr
+                              : AppStrings.add_cart.tr,
                           press: () async {
                             if (isservice) {
                               DateTime? dateTime = await showOmniDateTimePicker(

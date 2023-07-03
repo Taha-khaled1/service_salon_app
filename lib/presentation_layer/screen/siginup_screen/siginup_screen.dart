@@ -46,7 +46,7 @@ class SiginUpScreen extends StatelessWidget {
         if (status == 422) {
           showDilog(
             context,
-            'يوجد خطاء في المعلومات يرجي كتابة الملومات صحيحه',
+            AppStrings.incorrect_information.tr,
             type: QuickAlertType.info,
             onConfirmBtnTap: () {
               Get.back();
@@ -55,7 +55,7 @@ class SiginUpScreen extends StatelessWidget {
         } else {
           showDilog(
             context,
-            'تم انشاء الحساب بنجاح يمكنك الان تسجيل الدخول',
+            AppStrings.account_created_successfully.tr,
             type: QuickAlertType.success,
             barrierDismissible: false,
             onConfirmBtnTap: () {
@@ -75,7 +75,7 @@ class SiginUpScreen extends StatelessWidget {
         print('zzzzzzzzzzzzzzzzzzzzzzzzzz');
         showDilog(
           context,
-          'يوجد خطاء في المعلومات يرجي كتابة الملومات صحيحه',
+          AppStrings.incorrect_information.tr,
           type: QuickAlertType.info,
           onConfirmBtnTap: () {
             Get.back();
@@ -186,7 +186,7 @@ class SiginUpScreen extends StatelessWidget {
                           onsaved: (p0) {
                             password = p0.toString();
                           },
-                          titel: AppStrings.phone.tr,
+                          titel: AppStrings.password.tr,
                           width: 15,
                           height: 100,
                           icon: Icons.lock,
@@ -198,7 +198,7 @@ class SiginUpScreen extends StatelessWidget {
                           width: deviceInfo.localWidth * 0.8,
                           haigh: 60,
                           color: ColorManager.kPrimary,
-                          text: 'انشاء حساب',
+                          text: AppStrings.create_account.tr,
                           press: () async {
                             if (formkeysigin.currentState!.validate()) {
                               formkeysigin.currentState!.save();

@@ -60,6 +60,8 @@ class MyTranslation extends Translations {
           "the_date_of_order": "تاريخ الطلب",
           "Subtotal": 'المجموع الفرعي',
           "Tax": 'الضريبه',
+          // "confirmation": 'تاكيد',
+
           'check_your_internet': 'تحقق من الانترنت الخاص بك',
           'there_is_a_problem_with_the_server': 'يوجد مشكله في الخادم',
           'there_is_a_problem_please_try_again':
@@ -430,183 +432,134 @@ final String ten = """
           """;
 
 final String par = '''
-<strong> سياسة الخصوصية </ strong> <p>
-                            قام Oudz ببناء تطبيق OUDZ باسم
-                            تطبيق مجاني. يتم توفير هذه الخدمة من قبل
-                            Oudz بدون تكلفة وهو مخصص للاستخدام على شكل
-                            يكون.
-                          </p> <p>
-                            تستخدم هذه الصفحة لإعلام الزوار بخصوص موقعنا
-                            سياسات مع جمع واستخدام والكشف عن الشخصية
-                            المعلومات إذا قرر أي شخص استخدام خدمتنا.
-                          </p> <p>
-                            إذا اخترت استخدام خدمتنا ، فأنت توافق على ذلك
-                            جمع واستخدام المعلومات المتعلقة بهذا
-                            سياسة. المعلومات الشخصية التي نجمعها هي
-                            تستخدم لتوفير الخدمة وتحسينها. لن نستخدم أو نشارك معلوماتك معك
-                            أي شخص باستثناء ما هو موضح في سياسة الخصوصية هذه.
-                          </p> <p>
-                            المصطلحات المستخدمة في سياسة الخصوصية هذه لها نفس المعاني
-                            كما هو الحال في الشروط والأحكام الخاصة بنا ، والتي يمكن الوصول إليها على
-                            OUDZ ما لم يتم تحديد خلاف ذلك في سياسة الخصوصية هذه.
-                          </p> <p> <strong> جمع المعلومات واستخدامها </ strong> </p> <p>
-                            للحصول على تجربة أفضل ، أثناء استخدام خدمتنا ، نحن
-                            قد يطلب منك تزويدنا ببعض بشكل شخصي
-                            معلومات يمكن التعرف عليها. المعلومات التي
-                            نحن نطلب الاحتفاظ بها واستخدامها كما هو موضح في سياسة الخصوصية هذه.
-                          </p> <div> <p>
-                              يستخدم التطبيق خدمات الجهات الخارجية التي قد تجمع
-                              المعلومات المستخدمة لتحديد هويتك.
-                            </p> <p>
-                              رابط لسياسة الخصوصية الخاصة بموفري خدمات الطرف الثالث المستخدمة
-                              بواسطة التطبيق
-                            </p> <ul> <li> <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer"> خدمات Google Play </a> < / li> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! --- -> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ---- > <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> <! ----> </ul> </div> <p> <strong> بيانات السجل </ strong> </p> <p>
-                            نريد إخبارك بذلك في أي وقت
-                            استخدام خدمتنا ، في حالة وجود خطأ في التطبيق
-                            نقوم بجمع البيانات والمعلومات (من خلال طرف ثالث
-                            Productss) على هاتفك يسمى Log Data. قد تكون بيانات السجل هذه
-                            تتضمن معلومات مثل بروتوكول الإنترنت الخاص بجهازك
-                            ("IP") ، واسم الجهاز ، وإصدار نظام التشغيل ، و
-                            تكوين التطبيق عند استخدام خدمتنا ،
-                            وقت وتاريخ استخدامك للخدمة ، وغير ذلك
-                            إحصائيات.
-                          </p> <p> <strong> ملفات تعريف الارتباط </ strong> </p> <p>
-                            ملفات تعريف الارتباط هي ملفات تحتوي على كمية صغيرة من البيانات
-                            يشيع استخدامها كمعرفات فريدة مجهولة. يتم إرسال هذه
-                            إلى متصفحك من مواقع الويب التي تزورها وتتواجد بها
-                            المخزنة على الذاكرة الداخلية لجهازك.
-                          </p> <p>
-                            لا تستخدم هذه الخدمة "ملفات تعريف الارتباط" بشكل صريح. لكن،
-                            قد يستخدم التطبيق رموزًا ومكتبات تابعة لجهة خارجية تستخدم ملفات
-                            "ملفات تعريف الارتباط" لجمع المعلومات وتحسين خدماتهم.
-                            لديك خيار إما قبول أو رفض ملفات تعريف الارتباط هذه
-                            ومعرفة متى يتم إرسال ملف تعريف الارتباط إلى جهازك. اذا أنت
-                            اختر رفض ملفات تعريف الارتباط الخاصة بنا ، فقد لا تتمكن من استخدام بعضها
-                            أجزاء من هذه الخدمة.
-                          </p> <p> <strong> مقدمو الخدمة </ strong> </p> <p>
-                            يجوز لنا توظيف شركات خارجية و
-                            الأفراد للأسباب التالية:
-                          </p> <ul> <li> لتسهيل خدمتنا ؛ </ li> <li> لتقديم الخدمة نيابة عنا ؛ </ li> <li> لأداء الخدمات المتعلقة بالخدمة ؛ أو </li> <li> لمساعدتنا في تحليل كيفية استخدام خدمتنا. </ li> </ul> <p>
-                            نريد إبلاغ المستخدمين بهذه الخدمة
-                            أن هذه الأطراف الثالثة لديها حق الوصول إلى شخصيتهم
-                            معلومة. السبب هو أداء المهام الموكلة إلى
-                            نيابة عنا. ومع ذلك ، فهم ملزمون بعدم القيام بذلك
-                            الكشف عن المعلومات أو استخدامها
+
+  <!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سياسة الخصوصية</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    p {
+      color: #777;
+      font-size: 16px;
+    }
+
+    ul {
+      color: #777;
+      font-size: 16px;
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>سياسة الخصوصية</h1>
+  <p>نحن نقدر ثقتك فينا، ونحن ندرك أنه يجب علينا الحفاظ على خصوصيتك. في هذه السياسة، نشرح كيفية استخدامنا للمعلومات التي نجمعها من خلال تطبيقنا وخدماتنا.</p>
+
+  <h2>المعلومات التي نجمعها</h2>
+  <p>عند استخدام تطبيقنا، قد نجمع المعلومات التالية:</p>
+  <ul>
+    <li>الاسم الكامل</li>
+    <li>العنوان البريدي</li>
+    <li>رقم الهاتف</li>
+    <li>البريد الإلكتروني</li>
+    <li>معلومات الدفع</li>
+    <li>معلومات الطلبات والمشتريات</li>
+  </ul>
+
+  <h2>كيفية استخدامنا للمعلومات</h2>
+  <p>نستخدم المعلومات التي نجمعها لتحسين تجربتك على تطبيقنا، وكذلك لتقديم الخدمات التي طلبتها. نحن لا نبيع أو نشارك معلوماتك مع أي طرف ثالث دون موافقتك الصريحة، إلا إذا كان ذلك مطلوبًا قانونًا أو لتنفيذ أحد الشروط والأحكام الخاصة بنا.</p>
+
+  <h2>كيفية حماية المعلومات</h2>
+  <p>نحن نتخذ إجراءات أمنية ملائمة لحماية المعلومات الشخصية التي نجمعها، بما في ذلك إجراءات الوصول المناسبة والتحكم في الوصول وتقنيات التشفير. ومع ذلك، يجب ملاحظة أنه لا يوجد أمن مطلق على الإنترنت، ونحن لا نضمن أنه لن يتم الوصول إلى المعلومات بطرق غير مصرح بها.</p>
+
+  <h2>كيفية التواصل معنا</h2>
+  <p>إذا كان لديك أي أسئلة أو استفسارات حول سياسة الخصوصية الخاصة بنا، يرجى التواصل معنا عبر الوسائل المتاحة على تطبيقنا.</p>
+</body>
+</html>
 ''';
 final String pen = """
         
         
-        <!DOCTYPE html>
-                <html>
-                <head>
-              <meta charset='utf-8'>
-              <meta name='viewport' content='width=device-width'>
-              <title>Privacy Policy</title>
-              <style> body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding:1em; } </style>
-                </head>
-                <body>
-                <strong>Privacy Policy</strong> <p>
-                          Oudz built the OUDZ app as
-                          a Free app. This SERVICE is provided by
-                          Oudz at no cost and is intended for use as
-                          is.
-                        </p> <p>
-                          This page is used to inform visitors regarding our
-                          policies with the collection, use, and disclosure of Personal
-                          Information if anyone decided to use our Service.
-                        </p> <p>
-                          If you choose to use our Service, then you agree to
-                          the collection and use of information in relation to this
-                          policy. The Personal Information that we collect is
-                          used for providing and improving the Service. We will not use or share your information with
-                          anyone except as described in this Privacy Policy.
-                        </p> <p>
-                          The terms used in this Privacy Policy have the same meanings
-                          as in our Terms and Conditions, which are accessible at
-                          OUDZ unless otherwise defined in this Privacy Policy.
-                        </p> <p><strong>Information Collection and Use</strong></p> <p>
-                          For a better experience, while using our Service, we
-                          may require you to provide us with certain personally
-                          identifiable information. The information that
-                          we request will be retained by us and used as described in this privacy policy.
-                        </p> <div><p>
-                            The app does use third-party services that may collect
-                            information used to identify you.
-                          </p> <p>
-                            Link to the privacy policy of third-party service providers used
-                            by the app
-                          </p> <ul><li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a></li><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----></ul></div> <p><strong>Log Data</strong></p> <p>
-                          We want to inform you that whenever you
-                          use our Service, in a case of an error in the app
-                          we collect data and information (through third-party
-                          Productss) on your phone called Log Data. This Log Data may
-                          include information such as your device Internet Protocol
-                          (“IP”) address, device name, operating system version, the
-                          configuration of the app when utilizing our Service,
-                          the time and date of your use of the Service, and other
-                          statistics.
-                        </p> <p><strong>Cookies</strong></p> <p>
-                          Cookies are files with a small amount of data that are
-                          commonly used as anonymous unique identifiers. These are sent
-                          to your browser from the websites that you visit and are
-                          stored on your device's internal memory.
-                        </p> <p>
-                          This Service does not use these “cookies” explicitly. However,
-                          the app may use third-party code and libraries that use
-                          “cookies” to collect information and improve their services.
-                          You have the option to either accept or refuse these cookies
-                          and know when a cookie is being sent to your device. If you
-                          choose to refuse our cookies, you may not be able to use some
-                          portions of this Service.
-                        </p> <p><strong>Service Providers</strong></p> <p>
-                          We may employ third-party companies and
-                          individuals due to the following reasons:
-                        </p> <ul><li>To facilitate our Service;</li> <li>To provide the Service on our behalf;</li> <li>To perform Service-related services; or</li> <li>To assist us in analyzing how our Service is used.</li></ul> <p>
-                          We want to inform users of this Service
-                          that these third parties have access to their Personal
-                          Information. The reason is to perform the tasks assigned to
-                          them on our behalf. However, they are obligated not to
-                          disclose or use the information for any other purpose.
-                        </p> <p><strong>Security</strong></p> <p>
-                          We value your trust in providing us your
-                          Personal Information, thus we are striving to use commercially
-                          acceptable means of protecting it. But remember that no method
-                          of transmission over the internet, or method of electronic
-                          storage is 100% secure and reliable, and we cannot
-                          guarantee its absolute security.
-                        </p> <p><strong>Links to Other Sites</strong></p> <p>
-                          This Service may contain links to other sites. If you click on
-                          a third-party link, you will be directed to that site. Note
-                          that these external sites are not operated by us.
-                          Therefore, we strongly advise you to review the
-                          Privacy Policy of these websites. We have
-                          no control over and assume no responsibility for the content,
-                          privacy policies, or practices of any third-party sites or
-                          services.
-                        </p> <p><strong>Children’s Privacy</strong></p> <div><p>
-                            These Services do not address anyone under the age of 13.
-                            We do not knowingly collect personally
-                            identifiable information from children under 13 years of age. In the case
-                            we discover that a child under 13 has provided
-                            us with personal information, we immediately
-                            delete this from our servers. If you are a parent or guardian
-                            and you are aware that your child has provided us with
-                            personal information, please contact us so that
-                            we will be able to do the necessary actions.
-                          </p></div> <!----> <p><strong>Changes to This Privacy Policy</strong></p> <p>
-                          We may update our Privacy Policy from
-                          time to time. Thus, you are advised to review this page
-                          periodically for any changes. We will
-                          notify you of any changes by posting the new Privacy Policy on
-                          this page.
-                        </p> <p>This policy is effective as of 2023-05-22</p> <p><strong>Contact Us</strong></p> <p>
-                          If you have any questions or suggestions about our
-                          Privacy Policy, do not hesitate to contact us at oudze@oudze.ae.
-                        </p> <p>This privacy policy page was created at <a href="https://privacypolicytemplate.net" target="_blank" rel="noopener noreferrer">privacypolicytemplate.net </a>and modified/generated by <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank" rel="noopener noreferrer">App Privacy Policy Generator</a></p>
-                </body>
-                </html>
-              
-              
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    p {
+      color: #777;
+      font-size: 16px;
+    }
+
+    ul {
+      color: #777;
+      font-size: 16px;
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p>We value your trust, and we understand the importance of maintaining your privacy. In this policy, we explain how we use the information we collect through our application and services.</p>
+
+  <h2>Information We Collect</h2>
+  <p>When you use our application, we may collect the following information:</p>
+  <ul>
+    <li>Full Name</li>
+    <li>Mailing Address</li>
+    <li>Phone Number</li>
+    <li>Email Address</li>
+    <li>Payment Information</li>
+    <li>Order and Purchase Information</li>
+  </ul>
+
+  <h2>How We Use the Information</h2>
+  <p>We use the information we collect to improve your experience on our application and to provide the services you requested. We do not sell or share your information with any third party without your explicit consent, unless required by law or to enforce our own terms and conditions.</p>
+
+  <h2>Information Security</h2>
+  <p>We take appropriate security measures to protect the personal information we collect, including appropriate access controls, access control, and encryption techniques. However, please note that there is no absolute security on the internet, and we do not guarantee that unauthorized access to information will not occur.</p>
+
+  <h2>Contact Us</h2>
+  <p>If you have any questions or inquiries about our privacy policy, please contact us through the available channels on our application.</p>
+</body>
+</html>
+
               
               
               """;

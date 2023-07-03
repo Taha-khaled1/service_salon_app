@@ -9,6 +9,7 @@ import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 import 'package:single_salon/presentation_layer/screen/product_screen/product_controller/product_controller.dart';
+import 'package:single_salon/presentation_layer/screen/service_by_catogery_screen/service_by_catogery_screen.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -45,8 +46,9 @@ class ProductScreen extends StatelessWidget {
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2, mainAxisSpacing: 25,
                               crossAxisSpacing: 10,
-                              childAspectRatio:
-                                  200 / 305, // Adjust this ratio as needed
+                              childAspectRatio: getChildAspectRatio(
+                                deviceInfo,
+                              ), // Adjust this ratio as needed
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(

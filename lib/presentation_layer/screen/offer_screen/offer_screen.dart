@@ -4,9 +4,11 @@ import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_wi
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
 import 'package:single_salon/presentation_layer/screen/offer_screen/offer_controller/offer_controller.dart';
+import 'package:single_salon/presentation_layer/screen/service_by_catogery_screen/service_by_catogery_screen.dart';
 
 class OfferScreen extends StatelessWidget {
   const OfferScreen({Key? key}) : super(key: key);
@@ -39,7 +41,7 @@ class OfferScreen extends StatelessWidget {
                                   controller.serviceModel!.data == null ||
                                   controller.serviceModel!.data!.isEmpty
                               ? Text(
-                                  'ff',
+                                  AppStrings.not_offer.tr,
                                   textAlign: TextAlign.center,
                                   style: MangeStyles().getBoldStyle(
                                     color: ColorManager.kPrimary2,
@@ -56,8 +58,9 @@ class OfferScreen extends StatelessWidget {
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2, mainAxisSpacing: 25,
                                     crossAxisSpacing: 10,
-                                    childAspectRatio: 200 /
-                                        305, // Adjust this ratio as needed
+                                    childAspectRatio: getChildAspectRatio(
+                                      deviceInfo,
+                                    ), // Adjust this ratio as needed
                                   ),
                                   itemBuilder: (context, index) {
                                     return ProductWidget(

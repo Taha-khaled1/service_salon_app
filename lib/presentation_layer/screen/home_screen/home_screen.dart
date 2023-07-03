@@ -15,6 +15,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_controller/home_controller.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/widget/Titelmore.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/widget/catogery_card.dart';
+import 'package:single_salon/presentation_layer/screen/service_by_catogery_screen/service_by_catogery_screen.dart';
 import 'package:single_salon/presentation_layer/screen/service_details_screen/service_details_screen.dart';
 
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -214,7 +215,7 @@ class HomeScreen extends StatelessWidget {
                               crossAxisCount: 2,
                               mainAxisSpacing: 25,
                               crossAxisSpacing: 10,
-                              childAspectRatio: 200 / 305,
+                              childAspectRatio: getChildAspectRatio(deviceInfo),
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(

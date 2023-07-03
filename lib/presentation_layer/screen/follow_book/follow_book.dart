@@ -1,14 +1,14 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:single_salon/application_layer/utils/handling.dart';
 import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/models/follow_book_model.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
-import 'package:single_salon/presentation_layer/components/custombutten.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
-import 'package:single_salon/presentation_layer/resources/color_manager.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 
 class FollowBookScreen extends StatefulWidget {
   const FollowBookScreen({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appbarScreenWithBack('لوحة التحكم'),
+      appBar: appbarScreenWithBack(AppStrings.trackBookings.tr),
       body: InfoWidget(
         builder: (context, deviceInfo) {
           return Container(
@@ -68,20 +68,20 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
                   columns: [
                     DataColumn2(
                       label: Text(
-                        'Number of Sessions',
+                        AppStrings.number_of_sessions.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                       size: ColumnSize.L,
                     ),
                     DataColumn(
                       label: Text(
-                        'Service Name',
+                        AppStrings.service_name.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     DataColumn(
                       label: Text(
-                        'The date of Booking',
+                        AppStrings.the_date_of_booking.tr,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
