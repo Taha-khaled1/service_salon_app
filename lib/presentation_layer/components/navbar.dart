@@ -54,7 +54,7 @@ class _ExampleState extends State<Example> {
     // }
 
     return Scaffold(
-      appBar: appbarScreenWithdrawer(title),
+      appBar: appbarScreenWithdrawer(title, context),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

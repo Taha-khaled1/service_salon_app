@@ -1,4 +1,3 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:single_salon/main.dart';
@@ -9,7 +8,7 @@ import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:single_salon/presentation_layer/screen/account_screen/account_screen.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/cart_screen.dart';
-import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
+import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 
 PreferredSizeWidget appbarscreen(String title) {
   return AppBar(
@@ -30,7 +29,7 @@ PreferredSizeWidget appbarscreen(String title) {
   );
 }
 
-PreferredSizeWidget appbarScreenWithdrawer(String title) {
+PreferredSizeWidget appbarScreenWithdrawer(String title, BuildContext context) {
   return AppBar(
     flexibleSpace: Container(
       decoration: BoxDecoration(
@@ -60,7 +59,15 @@ PreferredSizeWidget appbarScreenWithdrawer(String title) {
         ),
         InkWell(
           onTap: () {
-            Get.to(() => CartScreen());
+            checkLogin(
+              context: context,
+              onConfirmBtnTap: () {
+                Get.to(() => LoginScreen());
+              },
+              elsefun: () {
+                Get.to(() => CartScreen());
+              },
+            );
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -113,49 +120,17 @@ PreferredSizeWidget appbarScreenWithBack(String title) {
   );
 }
 
-class customAppBar extends StatelessWidget {
-  const customAppBar({super.key, required this.title});
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      margin: EdgeInsets.only(top: 18),
-      height: 50,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: SvgPicture.asset(
-              'assets/icons/icons8-menu.svg',
-              height: 35,
-              color: Colors.white,
-            ),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              title,
-              style: MangeStyles().getBoldStyle(
-                color: ColorManager.kTextblack,
-                fontSize: FontSize.s18,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 void checkLogin(
     {required BuildContext context,
     required void Function()? onConfirmBtnTap,
     required void Function() elsefun}) {
   if (sharedPreferences.getString('token') == null) {
-    showDilog(context, 'يجب تسجيل الدخول اولا',
-        type: QuickAlertType.info, onConfirmBtnTap: onConfirmBtnTap);
+    showDilog(
+      context,
+      'يجب تسجيل الدخول اولا',
+      type: QuickAlertType.info,
+      onConfirmBtnTap: onConfirmBtnTap,
+    );
   } else {
     elsefun();
   }

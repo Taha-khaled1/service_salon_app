@@ -16,19 +16,34 @@ class HandlingDataView extends StatelessWidget {
     return statusRequest == StatusRequest.loading
         ? HandWidget(url: JsonAssets.loading2)
         : statusRequest == StatusRequest.offlinefailure
-            ? SizedBox(
-                height: 60,
-                child: Text('تحقق من الانترنت الخاص بك'),
+            ? Center(
+                child: SizedBox(
+                  height: 60,
+                  child: Text(
+                    'تحقق من الانترنت الخاص بك',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
               )
             : statusRequest == StatusRequest.serverfailure
-                ? SizedBox(
-                    height: 60,
-                    child: Text('يوجد مشكله في الخادم'),
+                ? Center(
+                    child: SizedBox(
+                      height: 60,
+                      child: Text(
+                        'يوجد مشكله في الخادم',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
                   )
                 : statusRequest == StatusRequest.erorr
-                    ? SizedBox(
-                        height: 60,
-                        child: Text('يوجد مشكله ما يرجي اعادة المحاوله'),
+                    ? Center(
+                        child: SizedBox(
+                          height: 60,
+                          child: Text(
+                            'يوجد مشكله ما يرجي اعادة المحاوله',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
                       )
                     : widget;
   }

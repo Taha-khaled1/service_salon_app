@@ -93,7 +93,7 @@ class _FollowOrderScreenState extends State<FollowOrderScreen> {
                     ),
                   ],
                   rows: List<DataRow>.generate(
-                    cartItemModel?.data!.length ?? 1,
+                    cartItemModel?.data?.length ?? 0,
                     (index) => DataRow(
                       cells: [
                         DataCell(

@@ -6,7 +6,9 @@ import 'package:single_salon/data_layer/models/follow_book_model.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
+import 'package:single_salon/presentation_layer/components/custombutten.dart';
 import 'package:single_salon/presentation_layer/handlingView/handlingview.dart';
+import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 
 class FollowBookScreen extends StatefulWidget {
   const FollowBookScreen({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
       if (statusRequest2 == StatusRequest.success) {
         cartItemModel = await followBookingModel.fromJson(response);
       } else {
-        statusRequest2 = StatusRequest.failure;
+        statusRequest2 = StatusRequest.serverfailure;
       }
     } catch (e) {
       statusRequest2 = StatusRequest.erorr;
@@ -85,7 +87,7 @@ class _FollowBookScreenState extends State<FollowBookScreen> {
                     ),
                   ],
                   rows: List<DataRow>.generate(
-                    cartItemModel?.data!.length ?? 1,
+                    cartItemModel?.data?.length ?? 0,
                     (index) => DataRow(
                       cells: [
                         DataCell(

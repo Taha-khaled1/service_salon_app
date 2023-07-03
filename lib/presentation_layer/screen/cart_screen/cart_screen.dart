@@ -6,14 +6,11 @@ import 'package:single_salon/presentation_layer/screen/cart_screen/cart_controll
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/cart_card.dart';
 import 'package:single_salon/presentation_layer/screen/cart_screen/widget/final_price.dart';
 import 'package:single_salon/presentation_layer/components/appbar1.dart';
-import 'package:single_salon/presentation_layer/components/navbar.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../data_layer/models/carttest.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -21,6 +18,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CartController controller = Get.put(CartController());
+
     return Scaffold(
       backgroundColor: ColorManager.background,
       appBar: appbarScreenWithBack(AppStrings.cart.tr),
@@ -45,17 +43,38 @@ class CartScreen extends StatelessWidget {
                   builder: (controller) {
                     return HandlingDataView(
                       statusRequest: controller.statusRequest2,
-                      widget: Expanded(
-                        child: ListView.builder(
-                          itemCount: controller.cartItemModel?.data!.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return CartCard(
-                              cart: controller.cartItemModel?.data![index],
-                              index: index,
-                            );
-                          },
-                        ),
-                      ),
+                      widget: controller.cartItemModel?.message ==
+                              'Unauthenticated'
+                          ? Center(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'يجب تسجيل الدخول',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  CustomButton(
+                                    width: 400,
+                                    haigh: 60,
+                                    color: ColorManager.kPrimary,
+                                    text: 'تسجيل الدخول',
+                                    press: () {},
+                                  )
+                                ],
+                              ),
+                            )
+                          : Expanded(
+                              child: ListView.builder(
+                                itemCount:
+                                    controller.cartItemModel?.data?.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return CartCard(
+                                    cart:
+                                        controller.cartItemModel?.data![index],
+                                    index: index,
+                                  );
+                                },
+                              ),
+                            ),
                     );
                   },
                 ),
@@ -65,30 +84,37 @@ class CartScreen extends StatelessWidget {
                       statusRequest: controller.statusRequest,
                       widget: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: deviceInfo.localWidth * 0.1,
-                            vertical: 10),
-                        child: BottomSection(
-                          width: deviceInfo.localWidth,
-                          press: () {
-                            Map<String, dynamic> productIdsMap = {};
-                            Map<String, dynamic> quantitiesMap = {};
-                            print(controller.cartItemModel!.data!.length);
-                            for (int i = 0;
-                                i < controller.cartItemModel!.data!.length;
-                                i++) {
-                              productIdsMap[i.toString()] =
-                                  controller.cartItemModel!.data![i].id;
-                              quantitiesMap[i.toString()] =
-                                  controller.cartItemModel!.data![i].qunt;
-                            }
-                            print('${productIdsMap}------${quantitiesMap}');
-                            controller.checkOut(
-                              context,
-                              productIdsMap,
-                              quantitiesMap,
-                            );
-                          },
+                          horizontal: deviceInfo.localWidth * 0.1,
+                          vertical: 10,
                         ),
+                        child: controller.cartItemModel?.message ==
+                                'Unauthenticated'
+                            ? SizedBox()
+                            : BottomSection(
+                                width: deviceInfo.localWidth,
+                                press: () {
+                                  Map<String, dynamic> productIdsMap = {};
+                                  Map<String, dynamic> quantitiesMap = {};
+                                  print(controller.cartItemModel!.data!.length);
+                                  for (int i = 0;
+                                      i <
+                                          controller
+                                              .cartItemModel!.data!.length;
+                                      i++) {
+                                    productIdsMap[i.toString()] =
+                                        controller.cartItemModel!.data![i].id;
+                                    quantitiesMap[i.toString()] =
+                                        controller.cartItemModel!.data![i].qunt;
+                                  }
+                                  print(
+                                      '${productIdsMap}------${quantitiesMap}');
+                                  controller.checkOut(
+                                    context,
+                                    productIdsMap,
+                                    quantitiesMap,
+                                  );
+                                },
+                              ),
                       ),
                     );
                   },

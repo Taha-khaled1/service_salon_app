@@ -61,6 +61,7 @@ class OfferScreen extends StatelessWidget {
                                   ),
                                   itemBuilder: (context, index) {
                                     return ProductWidget(
+                                      isservice: true,
                                       serviceData:
                                           controller.serviceModel?.data![index],
                                     );

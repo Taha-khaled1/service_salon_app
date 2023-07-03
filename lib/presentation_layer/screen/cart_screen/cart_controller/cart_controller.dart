@@ -69,7 +69,7 @@ class CartController extends GetxController {
     try {
       if (StatusRequest.success == statusRequest) {
         if (respon['message'].toString() == 'success') {
-          showDilog(context, 'تم ارسال الرساله الخاصه بك\nبنجاح');
+          showDilog(context, '');
         } else {
           showDilog(
             context,

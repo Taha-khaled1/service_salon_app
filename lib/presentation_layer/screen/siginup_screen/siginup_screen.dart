@@ -10,55 +10,72 @@ import 'package:single_salon/presentation_layer/components/navbar.dart';
 import 'package:single_salon/presentation_layer/components/show_dialog.dart';
 import 'package:single_salon/presentation_layer/resources/color_manager.dart';
 import 'package:single_salon/presentation_layer/resources/font_manager.dart';
+import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:single_salon/presentation_layer/screen/siginup_screen/siginup_screen.dart';
+import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class SiginUpScreen extends StatelessWidget {
   final GlobalKey<FormState> formkeysigin = GlobalKey();
-  String? email, password;
+  String? email, password, phone, name;
   @override
   Widget build(BuildContext context) {
-    Future<void> login(String email, String password) async {
+    Future<void> siginUp(
+      String name,
+      String email,
+      String phone,
+      String password,
+    ) async {
       print('fffffffffffffffffffffffffffffffffffffffffff');
       // Make a post request with the email and password
       final response = await http.post(
-        Uri.parse('https://77ls.ae/api/login'),
+        Uri.parse('https://77ls.ae/api/register'),
         body: {
           'email': email,
           'password': password,
+          'name': name,
+          'phone': phone,
         },
       );
 
       if (response.statusCode == 200) {
-        final message = jsonDecode(response.body)['message'];
+        final status = jsonDecode(response.body)['status'];
         print(response.body);
-        if (message == 'Incorrect Data') {
+        if (status == 422) {
           showDilog(
             context,
-            'معلومات تسجيل الدخول خاطئه',
+            'يوجد خطاء في المعلومات يرجي كتابة الملومات صحيحه',
             type: QuickAlertType.info,
             onConfirmBtnTap: () {
               Get.back();
             },
           );
         } else {
-          final data = jsonDecode(response.body)['data'];
+          showDilog(
+            context,
+            'تم انشاء الحساب بنجاح يمكنك الان تسجيل الدخول',
+            type: QuickAlertType.success,
+            barrierDismissible: false,
+            onConfirmBtnTap: () {
+              Get.off(() => LoginScreen());
+            },
+          );
+          // final data = jsonDecode(response.body)['data'];
 
-          sharedPreferences.setInt('id', data['id']);
-          sharedPreferences.setString('name', data['name']);
-          sharedPreferences.setString('email', data['email']);
-          sharedPreferences.setString('phone', data['phone']);
-          sharedPreferences.setString('token', data['token']);
-          Get.to(() => Example());
+          // sharedPreferences.setInt('id', data['id']);
+          // sharedPreferences.setString('name', data['name']);
+          // sharedPreferences.setString('email', data['email']);
+          // sharedPreferences.setString('phone', data['phone']);
+          // sharedPreferences.setString('token', data['token']);
+          // Get.to(() => Example());
         }
       } else {
         print('zzzzzzzzzzzzzzzzzzzzzzzzzz');
         showDilog(
           context,
-          'معلومات تسجيل الدخول خاطئه',
+          'يوجد خطاء في المعلومات يرجي كتابة الملومات صحيحه',
           type: QuickAlertType.info,
           onConfirmBtnTap: () {
             Get.back();
@@ -93,10 +110,25 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           height: deviceInfo.screenHeight * 0.05,
                         ),
-                        CircleAvatar(
-                          radius: 80,
-                          backgroundColor: ColorManager.background,
-                          backgroundImage: AssetImage('assets/icons/logom.png'),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        CustomTextfeild(
+                          valid: (value) {
+                            return validInput(
+                              value.toString(),
+                              2,
+                              100,
+                              'nammm',
+                            );
+                          },
+                          onsaved: (p0) {
+                            name = p0.toString();
+                          },
+                          titel: AppStrings.name.tr,
+                          width: 15,
+                          height: 100,
+                          icon: Icons.person,
                         ),
                         SizedBox(
                           height: 20,
@@ -113,10 +145,30 @@ class LoginScreen extends StatelessWidget {
                           onsaved: (p0) {
                             email = p0.toString();
                           },
-                          titel: 'البريد الاكتروني',
+                          titel: AppStrings.email.tr,
                           width: 15,
                           height: 100,
                           icon: Icons.email,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        CustomTextfeild(
+                          valid: (value) {
+                            return validInput(
+                              value.toString(),
+                              5,
+                              100,
+                              'phone',
+                            );
+                          },
+                          onsaved: (p0) {
+                            phone = p0.toString();
+                          },
+                          titel: AppStrings.phone.tr,
+                          width: 15,
+                          height: 100,
+                          icon: Icons.phone,
                         ),
                         SizedBox(
                           height: 20,
@@ -134,7 +186,7 @@ class LoginScreen extends StatelessWidget {
                           onsaved: (p0) {
                             password = p0.toString();
                           },
-                          titel: 'كلمة السر',
+                          titel: AppStrings.phone.tr,
                           width: 15,
                           height: 100,
                           icon: Icons.lock,
@@ -146,41 +198,16 @@ class LoginScreen extends StatelessWidget {
                           width: deviceInfo.localWidth * 0.8,
                           haigh: 60,
                           color: ColorManager.kPrimary,
-                          text: 'تسجيل الدخول',
+                          text: 'انشاء حساب',
                           press: () async {
                             if (formkeysigin.currentState!.validate()) {
                               formkeysigin.currentState!.save();
-                              login(email!, password!).then((_) {
-                                final id = sharedPreferences.getInt('id');
-                                final name =
-                                    sharedPreferences.getString('name');
-                                final email =
-                                    sharedPreferences.getString('email');
-                                final phone =
-                                    sharedPreferences.getString('phone');
-                                final token =
-                                    sharedPreferences.getString('token');
-
-                                print('id: $id');
-                                print('name: $name');
-                                print('email: $email');
-                                print('phone: $phone');
-                                print('token: $token');
-                              }).catchError((error) {
-                                print(error);
-                              });
+                              siginUp(name!, email!, phone!, password!);
                             }
                           },
                         ),
                         SizedBox(
                           height: 15,
-                        ),
-                        TextWithButtonTExt(
-                          text1: 'ليس لديك حساب؟',
-                          text2: 'اشتراك',
-                          onTap: () {
-                            Get.to(() => SiginUpScreen());
-                          },
                         ),
                       ],
                     ),

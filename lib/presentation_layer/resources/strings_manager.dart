@@ -71,4 +71,44 @@ class AppStrings {
 
   static const String cateogery = 'cateogery';
   static const String more = 'more';
+
+////////////////////////////////////////////////////////////
+
+  static const String login_required = 'login_required';
+  static const String invalid_credentials = 'invalid_credentials';
+  static const String incorrect_information = 'incorrect_information';
+  static const String account_created_successfully =
+      'account_created_successfully';
+  static const String request_sent_successfully = 'request_sent_successfully';
+  static const String request_not_sent = 'request_not_sent';
+  static const String something_went_wrong = 'something_went_wrong';
+  static const String service_booked_successfully =
+      'service_booked_successfully';
+  static const String login_required_service_not_booked =
+      'login_required_service_not_booked';
+  static const String error_service_booking = 'error_service_booking';
+  static const String item_added_to_cart_successfully =
+      'item_added_to_cart_successfully';
+  static const String item_not_added_to_cart = 'item_not_added_to_cart';
+  static const String check_your_internet = 'check_your_internet';
+
+  static const String there_is_a_problem_with_the_server =
+      'there_is_a_problem_with_the_server';
+  static const String there_is_a_problem_please_try_again =
+      'there_is_a_problem_please_try_again';
+
+  static const String create_account = 'create_account';
+  static const String you_do_not_have_a_new_account =
+      'you_do_not_have_a_new_account';
+  static const String subscription = 'subscription';
+  // static const String subtotal = 'subtotal';
+  // static const String tax = 'tax';
+  static const String status = 'status';
+  static const String total_price = 'total_price';
+  static const String the_date_of_order = 'the_date_of_order';
+  static const String not_offer = 'not_offer';
+  static const String password = 'password';
+  static const String number_of_sessions = 'number_of_sessions';
+  static const String service_name = 'service_name';
+  static const String the_date_of_booking = 'the_date_of_booking';
 }

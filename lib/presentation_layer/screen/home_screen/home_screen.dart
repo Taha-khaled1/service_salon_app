@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:single_salon/data_layer/models/productmodel.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/Infowidget/ui_components/info_widget.dart';
@@ -217,7 +218,20 @@ class HomeScreen extends StatelessWidget {
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(
-                                press: () {},
+                                press: () async {
+                                  DateTime? dateTime =
+                                      await showOmniDateTimePicker(
+                                    context: context,
+                                  );
+                                  print(
+                                      '$dateTime ${controller.serviceModel?.data![index].id ?? 1}');
+                                  controller.bookingService(
+                                    context,
+                                    controller.serviceModel?.data![index].id ??
+                                        1,
+                                    dateTime.toString(),
+                                  );
+                                },
                                 isservice: true,
                                 serviceData:
                                     homeController.serviceModel?.data![index],
@@ -245,11 +259,11 @@ class ProductWidget extends StatelessWidget {
   const ProductWidget({
     super.key,
     this.serviceData,
-    this.isservice,
+    required this.isservice,
     this.press,
   });
   final ServiceData? serviceData;
-  final bool? isservice;
+  final bool isservice;
   final void Function()? press;
   @override
   Widget build(BuildContext context) {
@@ -324,7 +338,9 @@ class ProductWidget extends StatelessWidget {
                   haigh: 50,
                   fontSize: 14,
                   color: Colors.black,
-                  text: AppStrings.getService.tr,
+                  text: isservice
+                      ? AppStrings.getService.tr
+                      : AppStrings.add_cart.tr,
                   press: press,
                 ),
               ],

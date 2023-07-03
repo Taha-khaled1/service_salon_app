@@ -6,6 +6,7 @@ import 'package:single_salon/application_layer/utils/statusrequst.dart';
 import 'package:single_salon/data_layer/models/productmodel.dart';
 import 'package:single_salon/data_layer/resbons_function/home._resbons.dart';
 import 'package:single_salon/presentation_layer/components/show_dialog.dart';
+import 'package:single_salon/presentation_layer/screen/login_screen/login_screen.dart';
 
 class ServiceController extends GetxController {
   late StatusRequest statusRequest1;
@@ -38,6 +39,15 @@ class ServiceController extends GetxController {
       if (StatusRequest.success == statusRequest) {
         if (respon['message'].toString() == 'success') {
           showDilog(context, 'تم الاضافه لعربة التسوق بنجاح');
+        } else if (respon['message'].toString() == 'Unauthenticated') {
+          showDilog(
+            context,
+            'يجب تسجيل الدخول',
+            type: QuickAlertType.warning,
+            onConfirmBtnTap: () {
+              Get.to(() => LoginScreen());
+            },
+          );
         } else {
           showDilog(
             context,

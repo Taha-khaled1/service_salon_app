@@ -4,7 +4,10 @@ import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 void showDilog(BuildContext context, String massg,
-    {QuickAlertType? type, bool? butn, void Function()? onConfirmBtnTap}) {
+    {QuickAlertType? type,
+    bool? butn,
+    void Function()? onConfirmBtnTap,
+    bool? barrierDismissible}) {
   QuickAlert.show(
     context: context,
     type: type ?? QuickAlertType.success,
@@ -12,6 +15,7 @@ void showDilog(BuildContext context, String massg,
     confirmBtnText: 'موافق',
     cancelBtnText: 'No',
     confirmBtnColor: Colors.green,
+    barrierDismissible: barrierDismissible ?? true,
     onConfirmBtnTap: onConfirmBtnTap ??
         () {
           if (butn == true) {
