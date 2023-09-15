@@ -73,7 +73,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 flutter_native_splash:
   color: "#FFFFFF"
-  image: assets/icons/logom.png
+  image: assets/icons/logom (1).png
   android_gravity: center
 # flutter_native_splash:
 #   image_path: "assets/icons/logom.png"

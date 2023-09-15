@@ -1,9 +1,3 @@
-import 'package:single_salon/presentation_layer/resources/color_manager.dart';
-import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
-import 'package:flutter/material.dart';
-
-import '../resources/font_manager.dart';
-
 import 'package:flutter/material.dart';
 
 class CustomTextfeild extends StatelessWidget {

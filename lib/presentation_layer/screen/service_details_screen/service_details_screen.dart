@@ -11,6 +11,7 @@ import 'package:single_salon/presentation_layer/resources/strings_manager.dart';
 import 'package:single_salon/presentation_layer/resources/styles_manager.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_controller/home_controller.dart';
 import 'package:single_salon/presentation_layer/screen/home_screen/home_screen.dart';
+import 'package:single_salon/presentation_layer/screen/service_by_catogery_screen/service_by_catogery_screen.dart';
 import 'package:single_salon/presentation_layer/screen/service_details_screen/service_details_controller/service_detalis_controller.dart';
 import 'package:single_salon/presentation_layer/screen/service_screen/service_controller/service_controller.dart';
 import 'package:single_salon/presentation_layer/screen/support_screen/support_problem_account_screen.dart';
@@ -247,7 +248,9 @@ class ServiceDetailsScreen extends StatelessWidget {
                               crossAxisCount: 2,
                               mainAxisSpacing: 25,
                               crossAxisSpacing: 10,
-                              childAspectRatio: 200 / 305,
+                              childAspectRatio: getChildAspectRatio(
+                                deviceInfo,
+                              ),
                             ),
                             itemBuilder: (context, index) {
                               return ProductWidget(

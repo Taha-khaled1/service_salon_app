@@ -337,7 +337,7 @@ class ProductWidget extends StatelessWidget {
                 CustomButton(
                   width: deviceInfo.localWidth * 0.8,
                   haigh: 50,
-                  fontSize: 14,
+                  fontSize: 12,
                   color: Colors.black,
                   text: isservice
                       ? AppStrings.getService.tr
